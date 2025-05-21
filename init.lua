@@ -1,4 +1,3 @@
-
 -- Set inital formatting options
 vim.opt.expandtab = true
 vim.opt.tabstop = 4

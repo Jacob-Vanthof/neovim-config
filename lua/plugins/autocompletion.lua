@@ -25,6 +25,11 @@ return {
         },
         'folke/lazydev.nvim'
     },
+
+    opts = {
+        -- Default keymap set
+        keymap = { preset = 'enter'}
+    },
     -- Set sources for cmp
     sources = {
         default = {'lsp', 'path', 'snippets', 'lazydev'},
@@ -34,6 +39,9 @@ return {
     },
     -- Set preset snippets
     snippets = { preset = 'luasnip' },
+
+    -- Dont autoshow documentation
+    completion = { documentation = {auto_show = false } },
 
     -- Enable the rust fuzzy finder
     fuzzy = { implementation = 'lua' },
