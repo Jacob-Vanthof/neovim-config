@@ -1,3 +1,4 @@
+
 -- Set inital formatting options
 vim.opt.expandtab = true
 vim.opt.tabstop = 4
@@ -23,5 +24,20 @@ vim.o.confirm = true
 -- Make sure that space is the leader key
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
+
+if vim.fn.has("wsl") then
+  vim.g.clipboard = {
+    name = "win_clipboard",
+    copy = {
+      ["+"] = "clip.exe",
+      ["*"] = "clip.exe",
+    },
+    paste = {
+      ["+"] = "powershell.exe Get-Clipboard",
+      ["*"] = "powershell.exe Get-Clipboard",
+    },
+    cache_enabled = 0,
+  }
+end
 
 require("config.lazy")
