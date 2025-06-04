@@ -24,6 +24,7 @@ return {
             -- Enable telescope extensions
             pcall(require('telescope').load_extension, 'fzf')
             pcall(require('telescope').load_extension, 'ui-select')
+            pcall(require('telescope').load_extension, 'lsp')
 
             -- Setup leader binds
             local builtin = require 'telescope.builtin'
@@ -37,6 +38,16 @@ return {
             vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
             vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
             vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
+
+            -- LSP builtin bindings
+            vim.keymap.set('n', 'gO', builtin.lsp_document_symbols, { desc = 'Open Document Symbols'})
+            vim.keymap.set('n', 'gW', builtin.lsp_dynamic_workspace_symbols, { desc = 'Open Workspace Symbols'})
+            vim.keymap.set('n', 'grn', vim.lsp.buf.rename, { desc = '[R]e[n]ame'})
+            vim.keymap.set('n', 'grf', vim.diagnostic.open_float, { desc = "Open the Diagnostic Float"})
+            vim.keymap.set('n', 'grd', builtin.lsp_definitions, { desc = '[G]oto [D]efinition'})
+            vim.keymap.set('n', 'gri', builtin.lsp_implementations, { desc = '[G]oto [I]mplementation'})
+            vim.keymap.set('n', 'grr', builtin.lsp_references, { desc = '[G]oto [R]eferences'})
+            vim.keymap.set({"n", "x"}, 'gra', builtin.lsp_definitions, { desc = '[G]oto Code [A]ction'})
             
             -- Setup an overide for some of the behavior
             vim.keymap.set('n', '<leader>/', function()

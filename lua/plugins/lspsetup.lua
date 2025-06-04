@@ -8,6 +8,8 @@ return {
                     fallbackFlags = 'std=c++17'
                 },
             })
+
+            vim.keymap.set('n', '<leader>sx', "<cmd>ClangdSwitchSourceHeader<cr>", {desc = "[S]witch Header <-[X]-> Source"})
         end,
     }
 }
