@@ -12,6 +12,9 @@ return {
     },
     {'rose-pine/neovim'},
     {'yorumicolors/yorumi.nvim'},
+    {'sainnhe/everforest'},
+    {'sainnhe/gruvbox-material'},
+    {'sainnhe/sonokai'},
     {
         'zaldih/themery.nvim',
         lazy = false,
@@ -54,6 +57,27 @@ return {
               "tokyonight-storm",
               "tokyonight-day",
               "tokyonight-moon",
+              
+              -- gruvbox-material
+              {
+                name = "gruvbox-material",
+                colorscheme = "gruvbox-material",
+                before = [[
+                  vim.opt.background="dark"
+                  vim.g.gruvbox_material_background="soft"
+                ]]
+              },
+              {
+                name = "gruvbox-material-light",
+                colorscheme = "gruvbox-material",
+                before = [[
+                  vim.opt.background="light"
+                  vim.g.gruvbox_material_background="soft"
+                ]],
+                after = [[
+                  vim.opt.background="light"
+                ]]
+              },
 
               -- Default themes
               "blue",
@@ -82,6 +106,7 @@ return {
               "unokai",
               "vim",
               "wildcharm",
+
             }
 
             require('themery').setup({
