@@ -41,3 +41,4 @@ if vim.fn.has("wsl") then
 end
 
 require("config.lazy")
+require("config.lsp")
