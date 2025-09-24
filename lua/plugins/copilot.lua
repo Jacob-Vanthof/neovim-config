@@ -15,5 +15,14 @@ return {
     {
         "CopilotC-Nvim/CopilotChat.nvim",
         build = "make tiktoken",
+        opts = {
+            window = {
+                width = 0.3,
+
+            },
+        },
+        config = function ()
+            vim.keymap.set('n', '<C-c>', function() require("CopilotChat").toggle({ window = {layout = "float", border = "rounded"}}) end, { desc = "Open Copilot Chat" })
+        end
     },
 }
