@@ -12,21 +12,33 @@ return {
             },
             'nvim-telescope/telescope-ui-select.nvim',
             'molecule-man/telescope-menufacture',
+            'nvim-telescope/telescope-file-browser.nvim',
         },
         config  = function()
             require('telescope').setup {
-                -- Setup a ui-select
+                -- Setup defaults
+                -- Setup extensions
                 extensions = {
+                    -- Setup a ui-select
                     ['ui-select'] = {
                         require('telescope.themes').get_dropdown(),
                     },
+                    -- Setup telescope-file-browser
+                    ['file_browser'] = {
+                        auto_depth = true,
+                        no_ignore = true,
+                        hidden = { file_browser = true, folder_browser = true },
+                        layout_strategy = 'horizontal',
+                        layout_config = { prompt_position = 'top' },
+                        sorting_strategy = 'ascending',
+                    },
                 },
             }
-            
             -- Enable telescope extensions
             pcall(require('telescope').load_extension, 'fzf')
             pcall(require('telescope').load_extension, 'ui-select')
             pcall(require('telescope').load_extension, 'lsp')
+            pcall(require('telescope').load_extension, 'file-browser')
 
             -- Setup leader binds
             local builtin = require 'telescope.builtin'
@@ -34,6 +46,7 @@ return {
             vim.keymap.set('n', '<leader>sw', require('telescope').extensions.menufacture.grep_string, { desc = '[S]earch current [W]ord' })
             vim.keymap.set('n', '<leader>sg', require('telescope').extensions.menufacture.live_grep, { desc = '[S]earch by [G]rep' })
             vim.keymap.set('n', '<leader>s.', require('telescope').extensions.menufacture.live_grep, { desc = '[S]earch Recent Files ("." for repeat)' })
+            vim.keymap.set('n', '<leader>fb', require('telescope').extensions.file_browser.file_browser, { desc = '[S]earch [B]rowse Files' })
             vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
             vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
             vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
@@ -50,7 +63,6 @@ return {
             vim.keymap.set('n', 'gri', builtin.lsp_implementations, { desc = '[G]oto [I]mplementation'})
             vim.keymap.set('n', 'grr', builtin.lsp_references, { desc = '[G]oto [R]eferences'})
             vim.keymap.set({"n", "x"}, 'gra', builtin.lsp_definitions, { desc = '[G]oto Code [A]ction'})
-            
             -- Setup an overide for some of the behavior
             vim.keymap.set('n', '<leader>/', function()
                 -- You can pass additional configuration to Telescope to change the theme, layout, etc.
