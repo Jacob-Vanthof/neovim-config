@@ -8,7 +8,7 @@ function _G.get_oil_winbar()
   local path = dir or vim.api.nvim_buf_get_name(0)
   -- Simulate multi-line with separators
   return table.concat({
-    "oil.nvim",
+    string.format("NVIM v%d.%d.%d", vim.version().major, vim.version().minor, vim.version().patch),
     "CWD: " .. vim.fn.fnamemodify(cwd, ":~"),
   }, " | ")
 end
