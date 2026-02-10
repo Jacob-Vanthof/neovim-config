@@ -10,8 +10,9 @@ return {
                 additional_vim_regex_highlighting = {'ruby'},
             },
             indent = { enable = true, disable  = {'ruby'}},
-        }
-    }
+        },
+    },
+    {
+        "nvim-treesitter/nvim-treesitter-context",
+    },
 }
-
-    
