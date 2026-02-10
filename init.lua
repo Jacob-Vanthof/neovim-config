@@ -25,6 +25,9 @@ vim.o.confirm = true
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+-- Adjust floating window borders
+vim.o.winborder = "bold"
+
 if vim.fn.has("wsl") then
   vim.g.clipboard = {
     name = "win_clipboard",

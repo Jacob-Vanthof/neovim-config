@@ -4,11 +4,11 @@ return {
         event  = 'VimEnter',
         -- This is where I can set plugins and configure them.
         dependencies = {
-            'nvim-lua/plenary.nvim', 
+            'nvim-lua/plenary.nvim',
             -- Add fuzzy finder plugin
             {
-                'nvim-telescope/telescope-fzf-native.nvim', 
-                build  = 'make', 
+                'nvim-telescope/telescope-fzf-native.nvim',
+                build  = 'make',
             },
             'nvim-telescope/telescope-ui-select.nvim',
             'molecule-man/telescope-menufacture',
@@ -25,12 +25,20 @@ return {
                     },
                     -- Setup telescope-file-browser
                     ['file_browser'] = {
-                        auto_depth = true,
-                        no_ignore = true,
-                        hidden = { file_browser = true, folder_browser = true },
+                        depth = 2,
+                        auto_depth = false,
+                        hidden = { folder_browser = true },
                         layout_strategy = 'horizontal',
-                        layout_config = { prompt_position = 'top' },
+                        layout_config = {
+                            prompt_position = 'top',
+                        },
                         sorting_strategy = 'ascending',
+                        border = true,
+                        borderchars = {
+                            prompt  = { "─", "│", "─", "│", "┌", "┬", "┤", "├" },
+                            results = { " ", "│", "─", "│", "│", "│", "┴", "└" },
+                            preview = { "─", "│", "─", " ", "─", "┐", "┘", "─" },
+                        },
                     },
                 },
             }
