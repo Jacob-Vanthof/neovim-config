@@ -22,7 +22,7 @@ return {
             },
         },
         config = function ()
-            vim.keymap.set('n', '<C-c>', function() require("CopilotChat").toggle({ window = {layout = "float", width = 0.8, height = 0.8, border = "rounded"}}) end, { desc = "Open Copilot Chat" })
+            vim.keymap.set('n', '<C-c>', function() require("CopilotChat").toggle({ window = {layout = "float", width = 0.8, height = 0.8}}) end, { desc = "Open Copilot Chat" })
         end
     },
 }
