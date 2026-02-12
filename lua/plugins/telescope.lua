@@ -25,7 +25,7 @@ return {
                     },
                     -- Setup telescope-file-browser
                     ['file_browser'] = {
-                        auto_depth = false,
+                        auto_depth = true,
                         hidden = { folder_browser = true },
                         layout_strategy = 'horizontal',
                         layout_config = {
@@ -37,6 +37,13 @@ return {
                             prompt  = { "─", "│", "─", "│", "┌", "┬", "┤", "├" },
                             results = { " ", "│", "─", "│", "│", "│", "┴", "└" },
                             preview = { "─", "│", "─", " ", "─", "┐", "┘", "─" },
+                        },
+                        mappings = {
+                            ['i'] = {
+                                ["<C-c>"] = false,
+                                ["<C-t>"] = false,
+                            },
+                            ['n'] = {},
                         },
                     },
                 },
