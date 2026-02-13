@@ -15,6 +15,7 @@ return {
             'nvim-telescope/telescope-file-browser.nvim',
         },
         config  = function()
+            local fb_actions = require "telescope".extensions.file_browser.actions
             require('telescope').setup {
                 -- Setup defaults
                 -- Setup extensions
@@ -42,6 +43,7 @@ return {
                             ['i'] = {
                                 ["<C-c>"] = false,
                                 ["<C-t>"] = false,
+                                ["<C-g>"] = fb_actions.change_cwd,
                             },
                             ['n'] = {},
                         },
@@ -52,7 +54,7 @@ return {
             pcall(require('telescope').load_extension, 'fzf')
             pcall(require('telescope').load_extension, 'ui-select')
             pcall(require('telescope').load_extension, 'lsp')
-            pcall(require('telescope').load_extension, 'file-browser')
+            require('telescope').load_extension 'file_browser'
 
             -- Setup leader binds
             local builtin = require 'telescope.builtin'
