@@ -26,7 +26,6 @@ return {
                     },
                     -- Setup telescope-file-browser
                     ['file_browser'] = {
-                        auto_depth = true,
                         hidden = { folder_browser = true },
                         layout_strategy = 'horizontal',
                         layout_config = {
